@@ -4,6 +4,17 @@ from dotenv import load_dotenv
 import datetime
 
 
+STOCK_NAME = "TSLA"
+COMPANY_NAME = "Tesla Inc"
+STOCK_ENDPOINT = "https://www.alphavantage.co/query"
+NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
+
+# Loads environment variables from .env local file.
+load_dotenv("C:/Python/EnvironmentVariables/.env")
+alpha_vantage_api_key = os.environ.get("alpha_vantage_api_key")
+news_api_key = os.environ.get("news_api_key")
+
+
 # Makes Telegram bot send message to specific user.
 def telegram_bot_send_text(bot_message):
     bot_token = os.environ.get("rain_alert_bot_token")
@@ -12,16 +23,6 @@ def telegram_bot_send_text(bot_message):
     response = requests.get(send_text)
     return response.json()
 
-
-# Loads environment variables from .env local file.
-load_dotenv("C:/Python/EnvironmentVariables/.env")
-alpha_vantage_api_key = os.environ.get("alpha_vantage_api_key")
-news_api_key = os.environ.get("news_api_key")
-
-STOCK_NAME = "TSLA"
-COMPANY_NAME = "Tesla Inc"
-STOCK_ENDPOINT = "https://www.alphavantage.co/query"
-NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 # Gets data from stock Alpha Vantage Stock API
 params_stock = {
